@@ -3,7 +3,10 @@ import { useState } from "react";
 import styles from "./index.module.css";
 
 export default function Home() {
-  const [animalInput, setAnimalInput] = useState("");
+  const [achievement, setAchievement] = useState("");
+  const [team, setTeam] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const [result, setResult] = useState();
 
   async function onSubmit(event) {
@@ -14,16 +17,18 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ animal: animalInput }),
+        body: JSON.stringify({ achievement: achievement, team: team, startDate: startDate, endDate: endDate}),
       });
 
       const data = await response.json();
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
+console.log('data.result',data)
 
       setResult(data.result);
-      setAnimalInput("");
+
+      setAchievement("");
     } catch(error) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -35,21 +40,43 @@ export default function Home() {
     <div>
       <Head>
         <title>OpenAI Quickstart</title>
-        <link rel="icon" href="/dog.png" />
+        <link rel="icon" href="/superteam.png" />
       </Head>
 
       <main className={styles.main}>
-        <img src="/dog.png" className={styles.icon} />
-        <h3>Name my pet</h3>
+        <img src="/superteam.png" className={styles.icon} />
+        <h3>Clara</h3>
         <form onSubmit={onSubmit}>
+          
           <input
             type="text"
-            name="animal"
-            placeholder="Enter an animal"
-            value={animalInput}
-            onChange={(e) => setAnimalInput(e.target.value)}
+            name="achievement"
+            placeholder="What do you want to achieve?"
+            value={achievement}
+            onChange={(e) => setAchievement(e.target.value)}
           />
-          <input type="submit" value="Generate names" />
+            <input
+            type="text"
+            name="team"
+            placeholder="Describe your team"
+            value={team}
+            onChange={(e) => setTeam(e.target.value)}
+          />
+           <input
+            type="text"
+            name="staredDate"
+            placeholder="Start date"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+          />
+            <input
+            type="text"
+            name="endDate"
+            placeholder="End date"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+          />
+          <input type="submit" value="Generate a goal" />
         </form>
         <div className={styles.result}>{result}</div>
       </main>

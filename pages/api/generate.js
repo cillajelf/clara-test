@@ -15,25 +15,30 @@ export default async function (req, res) {
     return;
   }
 
-  const animal = req.body.animal || '';
-  if (animal.trim().length === 0) {
+  const achievement = req.body.achievement || '';
+  if (achievement.trim().length === 0) {
     res.status(400).json({
       error: {
-        message: "Please enter a valid animal",
+        message: "Please enter a valid achievement",
       }
     });
     return;
   }
-
+  
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: generatePrompt(animal),
-      temperature: 0.6,
+      prompt: generatePrompt(req.body.achievement, req.body.team, req.body.startDate, req.body.endDate),
+      temperature: 0.9,
+      max_tokens: 400,
+      // stop: "\n"
     });
+
+    // console.log('prompt---->', generatePrompt(req.body.achievement, req.body.team, req.body.startDate, req.body.endDate))
+
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch(error) {
-    // Consider adjusting the error handling logic for your use case
+   
     if (error.response) {
       console.error(error.response.status, error.response.data);
       res.status(error.response.status).json(error.response.data);
@@ -48,15 +53,9 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(animal) {
-  const capitalizedAnimal =
-    animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return `Suggest three names for an animal that is a superhero.
-
-Animal: Cat
-Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-Animal: Dog
-Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-Animal: ${capitalizedAnimal}
-Names:`;
+function generatePrompt(achievement, team, startDate, endDate) {
+return `Create a goal, using the SMART goal setting framework, to ${achievement} for a team of ${team} from ${startDate} to ${endDate}.`
+// return `Create an achievable goal improving team morale in a software developer team of 6 engineers, by the end of Q2 2023 using SMART goal framework.`
+// return `Write a tagline for an ice cream shop?`
+//return `Write a presentation of the character Frodo from the book Lord of the Rings`
 }
