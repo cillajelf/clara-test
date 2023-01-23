@@ -30,7 +30,7 @@ export default async function (req, res) {
       model: "text-davinci-003",
       prompt: generatePrompt(req.body.achievement, req.body.team, req.body.startDate, req.body.endDate),
       temperature: 0.9,
-      max_tokens: 400,
+      max_tokens: 700,
       // stop: "\n"
     });
 
@@ -54,8 +54,76 @@ export default async function (req, res) {
 }
 
 function generatePrompt(achievement, team, startDate, endDate) {
-return `Create a goal, using the SMART goal setting framework, to ${achievement} for a team of ${team} from ${startDate} to ${endDate}.`
+return `Create a suggestion for a goal, using the SMARTER goal setting framework, to ${achievement} for a team of ${team} from ${startDate} to ${endDate}.
+Achievement: Reduce employee turnover
+Team: 6 software developers
+Start Date: 1/1 2023
+End Date: 3/31 2023
+Suggestion: 
+Specific: Which target area is most at risk and focus on this area. Maybe try and reduce the amount of employee turnover in employees who have been at the company for less than 2 years.
+Measurable: Generate a more specific metric. For example, reduce turnover by 15%.
+Achievable: It is time for a step back, consider if this target is realistic. If so, great! If not, have another think.
+Relevant: Is the current rate of employee turnover damaging, do you want small or large improvements? Does your company have a specific problem with onboarding for example?
+Timely: Q1 2023
+Evaluation: Evaluate your process along the way, look at the process every two weeks to see what is working well and what is not.
+Re-adjust: Some problems may occur along the way. For example, changing the onboarding process may be met with resistance, can you change your approach to target another area, perhaps the recruitment phase?
+Goal: We will reduce employee turnover by 15% in the next 3 months by addressing issues in the onboarding process. Constant evaluation is required with re-adjustment options available.'
+
+Achievement: Increase website traffic
+Team: Marketing team of 5 marketers
+Start Date: Start of Q2 2023
+End Date: End of Q2 2023
+Suggestion: 
+Specific: Increase organic traffic specifically, thereby removing all other traffic categories and focusing on one.
+Measurable: 25% increase of unique site visits. Stimulated by producing 5 extra blogs per week.
+Achievable: Again is this target a realistic goal within the rescources of the marketing team? If so, great! If not, have another think.
+Relevant: Organic traffic has been identified as a key driver of new sales, so this is a relevant goal.
+Timely : 4/1/2023 - 6/30/2023
+Evaluation: Is the objective working? Is organic traffic increasing as we go through the process? Make sure to keep on checking and evaluating your progress. If the objective is successful, extend the objectives for another 3 months and re-evaluate your target.
+Re-adjust : Is the number of blogs too few or too many? Re-adjust to match the abilities of the marketing team.
+Goal: Increase website traffic by 25% by creating 5 extra blog posts a week within the next three months. If the objective is a success, consider extending the process for another 3 months with new targets.
+
+Achievement: Improve employee engagement
+Team: A software development team of 6 engineers and 2 designers
+Start Date: Start of Q2 2023
+End Date: End of Q2 2023
+Suggestion: 
+Specific: Extract one topic/question from your employee engagement survey to focus on. For example, try and improve the score on the question: You feel the work you do is valued and appreciated.
+Measurable: Responses on the employee engagement survey are based on a Likert scale (usually a 5- or 7-point scale). The desired target would be responses in the top two numbers (dependent on scale). Try and boost responses in this target area to 75%.
+Achievable: A challenging goal, but one which has wide reaching benefits. The target needs to be realistic within the scope of your organization and resources.
+Relevant: Improving employee engagement has a positive impact on productivity in a number of different facets.
+Timely:  4/1/2023 - 6/30/2023
+Evaluate: Continuously evaluate your processes with pulse surveys and ENPs.
+Re-adjust: If the goal is unachievable, think about implementing a social recognition programme instead.
+Goal: Improve the employees feeling of value with their work, by achieving a 75% target in the employee engagement survey topic during Q2 2023. Assess and evaluate progress with pulse surveys and ENPs.
+
+Achievement: Develop better interpersonal relationships
+Team: A software development team of 6 engineers and 2 designers
+Start Date: Start of Q2 2023
+End Date: End of Q2 2023
+Suggestion: 
+Specific: Interpersonal relationships are unbelievably important, and you cannot boil it down this simply. Choose a certain part of interpersonal relationships to focus on for example Develop better active listening skills.
+Measurable: A slightly more difficult goal to measure. Feedback, and especially 360° feedback, is a good way to measure your interpersonal relationships with colleagues, superiors and subordinates. Try and achieve a 30% increase in responses compared to your last feedback review on this topic area.
+Achievable: Is this achievable? The importance of developing strong interpersonal relationships should not be underestimated, and this goal should not be thought of as unachievable.
+Relevant: Interpersonal skills are important. They help people build and foster strong working relationships.
+Timely: 4/1/2023 - 6/30/2023
+Evaluation: Try and garner feedback continuously in the process to evaluate how you are getting on.
+Re-adjustment: If you feel as though the feedback you are receiving is not timely or responsive enough, think about trying more informal feedback process to assess your progress.
+Goal: Improve the employees feeling of value with their work, by achieving a 75% target in the employee engagement survey topic during Q2 2023. Assess and evaluate progress with pulse surveys and ENPs.
+
+Achievement: ${achievement}
+Team: ${team}
+Start Date: ${startDate}
+End Date: ${endDate}
+Suggestion:
+`
 // return `Create an achievable goal improving team morale in a software developer team of 6 engineers, by the end of Q2 2023 using SMART goal framework.`
 // return `Write a tagline for an ice cream shop?`
-//return `Write a presentation of the character Frodo from the book Lord of the Rings`
+// return `Write a presentation of the character Frodo from the book Lord of the Rings`
+// Animal: Cat
+// Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
+// Animal: Dog
+// Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
+// Animal: ${capitalizedAnimal}
+// Names:`;
 }
