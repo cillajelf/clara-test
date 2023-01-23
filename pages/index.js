@@ -24,14 +24,14 @@ export default function Home() {
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
-console.log('data.result',data)
+// console.log('data.result',data)
 
       setResult(data.result);
 
-      setAchievement("");
+     //  setAchievement("");
     } catch(error) {
       // Consider implementing your own error handling logic here
-      console.error(error);
+      // console.error(error);
       alert(error.message);
     }
   }
@@ -77,6 +77,7 @@ console.log('data.result',data)
             onChange={(e) => setEndDate(e.target.value)}
           />
           <input type="submit" value="Generate a goal" />
+       
         </form>
         <div className={styles.result}>{result}</div>
       </main>
