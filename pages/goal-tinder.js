@@ -8,9 +8,11 @@ export default function Home() {
   const [achievable, setAchievable] = useState("");
   const [relevant, setRelevant] = useState("");
   const [timely, setTimely] = useState("");
-  const [evaluation, setEvaluation] = useState("");
-  const [readjust, setReadjust] = useState("");
-  const [result, setResult] = useState();
+//   const [evaluation, setEvaluation] = useState("");
+//   const [readjust, setReadjust] = useState("");
+  const [result, setResult] = useState("");
+  const [result1, setResult1] = useState("");
+  const [result2, setResult2] = useState("");
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -20,14 +22,15 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ specific: specific, measurable: measurable, achievable: achievable, relevant: relevant, timely:timely, evaluation:evaluation, readjust:readjust}),
+        body: JSON.stringify({ specific: specific, measurable: measurable, achievable: achievable, relevant: relevant, timely:timely}),
       });
 
       const data = await response.json();
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
-// console.log('data.result',data)
+
+      console.log('data -------->', data)
 
       setResult(data.result);
 
@@ -86,7 +89,8 @@ export default function Home() {
             value={timely}
             onChange={(e) => setTimely(e.target.value)}
           />   
-          <input
+
+          {/* <input
           type="text"
           name="evaluation"
           placeholder="Evaluation"
@@ -100,13 +104,17 @@ export default function Home() {
           placeholder="Re-adjust"
           value={readjust}
           onChange={(e) => setReadjust(e.target.value)}
-        />
+        /> */}
 
 
           <input type="submit" value="Generate a goal" />
-       
+     
         </form>
         <div className={styles.result}>{result}</div>
+        <div className={styles.result}>{result1}</div>
+        <div className={styles.result}>{result2}</div>
+
+         
       </main>
     </div>
   );
