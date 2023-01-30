@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>OpenAI Quickstart</title>
+        <title>Clara</title>
         <link rel="icon" href="/superteam.png" />
       </Head>
 
