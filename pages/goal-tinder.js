@@ -8,8 +8,6 @@ export default function Home() {
   const [achievable, setAchievable] = useState("");
   const [relevant, setRelevant] = useState("");
   const [timely, setTimely] = useState("");
-//   const [evaluation, setEvaluation] = useState("");
-//   const [readjust, setReadjust] = useState("");
   const [result, setResult] = useState("");
   const [result1, setResult1] = useState("");
   const [result2, setResult2] = useState("");
@@ -30,11 +28,20 @@ export default function Home() {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
 
-      console.log('data -------->', data)
+    //   console.log('data -------->', data)
 
-      setResult(data.result);
+      if(result.length === 0 ){
+        setResult(data.result);
+      }
+        if(result.length > 0 && result1.length === 0 ){
+        setResult1(data.result);
+        }
 
-     //  setAchievement("");
+        if(result.length > 0 && result1.length > 0 && result2.length === 0 ){ 
+        setResult2(data.result);
+         }
+
+
     } catch(error) {
       // Consider implementing your own error handling logic here
       // console.error(error);
@@ -89,23 +96,6 @@ export default function Home() {
             value={timely}
             onChange={(e) => setTimely(e.target.value)}
           />   
-
-          {/* <input
-          type="text"
-          name="evaluation"
-          placeholder="Evaluation"
-          value={evaluation}
-          onChange={(e) => setEvaluation(e.target.value)}
-        />
-
-<input
-          type="text"
-          name="readjust"
-          placeholder="Re-adjust"
-          value={readjust}
-          onChange={(e) => setReadjust(e.target.value)}
-        /> */}
-
 
           <input type="submit" value="Generate a goal" />
      
