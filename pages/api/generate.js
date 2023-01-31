@@ -65,8 +65,6 @@ Measurable: Generate a more specific metric. For example, reduce turnover by 15%
 Achievable: It is time for a step back, consider if this target is realistic. If so, great! If not, have another think.
 Relevant: Is the current rate of employee turnover damaging, do you want small or large improvements? Does your company have a specific problem with onboarding for example?
 Timely: Q1 2023
-Evaluation: Evaluate your process along the way, look at the process every two weeks to see what is working well and what is not.
-Re-adjust: Some problems may occur along the way. For example, changing the onboarding process may be met with resistance, can you change your approach to target another area, perhaps the recruitment phase?
 Goal: We will reduce employee turnover by 15% in the next 3 months by addressing issues in the onboarding process. Constant evaluation is required with re-adjustment options available.'
 
 Achievement: Increase website traffic
@@ -79,8 +77,6 @@ Measurable: 25% increase of unique site visits. Stimulated by producing 5 extra 
 Achievable: Again is this target a realistic goal within the rescources of the marketing team? If so, great! If not, have another think.
 Relevant: Organic traffic has been identified as a key driver of new sales, so this is a relevant goal.
 Timely : 4/1/2023 - 6/30/2023
-Evaluation: Is the objective working? Is organic traffic increasing as we go through the process? Make sure to keep on checking and evaluating your progress. If the objective is successful, extend the objectives for another 3 months and re-evaluate your target.
-Re-adjust : Is the number of blogs too few or too many? Re-adjust to match the abilities of the marketing team.
 Goal: Increase website traffic by 25% by creating 5 extra blog posts a week within the next three months. If the objective is a success, consider extending the process for another 3 months with new targets.
 
 Achievement: Improve employee engagement
@@ -93,8 +89,6 @@ Measurable: Responses on the employee engagement survey are based on a Likert sc
 Achievable: A challenging goal, but one which has wide reaching benefits. The target needs to be realistic within the scope of your organization and resources.
 Relevant: Improving employee engagement has a positive impact on productivity in a number of different facets.
 Timely:  4/1/2023 - 6/30/2023
-Evaluate: Continuously evaluate your processes with pulse surveys and ENPs.
-Re-adjust: If the goal is unachievable, think about implementing a social recognition programme instead.
 Goal: Improve the employees feeling of value with their work, by achieving a 75% target in the employee engagement survey topic during Q2 2023. Assess and evaluate progress with pulse surveys and ENPs.
 
 Achievement: Develop better interpersonal relationships
@@ -107,8 +101,6 @@ Measurable: A slightly more difficult goal to measure. Feedback, and especially 
 Achievable: Is this achievable? The importance of developing strong interpersonal relationships should not be underestimated, and this goal should not be thought of as unachievable.
 Relevant: Interpersonal skills are important. They help people build and foster strong working relationships.
 Timely: 4/1/2023 - 6/30/2023
-Evaluation: Try and garner feedback continuously in the process to evaluate how you are getting on.
-Re-adjustment: If you feel as though the feedback you are receiving is not timely or responsive enough, think about trying more informal feedback process to assess your progress.
 Goal: Improve the employees feeling of value with their work, by achieving a 75% target in the employee engagement survey topic during Q2 2023. Assess and evaluate progress with pulse surveys and ENPs.
 
 Achievement: ${achievement}
@@ -117,13 +109,5 @@ Start Date: ${startDate}
 End Date: ${endDate}
 Suggestion:
 `
-// return `Create an achievable goal improving team morale in a software developer team of 6 engineers, by the end of Q2 2023 using SMART goal framework.`
-// return `Write a tagline for an ice cream shop?`
-// return `Write a presentation of the character Frodo from the book Lord of the Rings`
-// Animal: Cat
-// Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-// Animal: Dog
-// Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-// Animal: ${capitalizedAnimal}
-// Names:`;
+
 }
