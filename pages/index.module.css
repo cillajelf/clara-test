@@ -20,6 +20,12 @@
   color: #353740;
   font-family: "ColfaxAI", Helvetica, sans-serif;
 }
+.main textarea {
+  font-size: 16px;
+  line-height: 24px;
+  color: #353740;
+  font-family: "ColfaxAI", Helvetica, sans-serif;
+}
 .main {
   display: flex;
   flex-direction: column;
@@ -36,12 +42,26 @@
   color: #202123;
   margin: 16px 0 40px;
 }
+.main h4 {
+  font-size: 24px;
+  line-height: 40px;
+  font-weight: bold;
+  color: #007DC3;
+  margin: auto;
+}
 .main form {
   display: flex;
   flex-direction: column;
   width: 320px;
 }
 .main input[type="text"] {
+  padding: 12px 16px;
+  border: 1px solid #007DC3;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  outline-color: #007DC3;
+}
+.main textarea[type="text"] {
   padding: 12px 16px;
   border: 1px solid #007DC3;
   border-radius: 4px;
@@ -65,8 +85,17 @@
   border: 1px solid #007DC3;
   border-radius: 4px;
   padding: 12px 16px;
+  margin-top: 16px; 
+  min-height: 20px;
+  max-height: 320px;
+  text-overflow: ellipsis;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+
+.main .goals {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
   margin-top: 40px;
-  margin-left:60px;
-  margin-right:60px;
- 
 }
