@@ -39,6 +39,7 @@ export default async function (req, res) {
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch(error) {
    
+    // https://community.openai.com/t/api-504s-in-production-vercel-only/28795/6
     // if (error.response) {
     //   console.error(error.response.status, error.response.data);
     //   res.status(error.response.status).json(error.response.data);
