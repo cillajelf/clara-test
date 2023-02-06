@@ -3,32 +3,45 @@ import { useState } from "react";
 import styles from "./index.module.css";
 
 export default function Home() {
-  const [achievement, setAchievement] = useState("");
-  const [team, setTeam] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [result, setResult] = useState();
+  const [specific, setSpecific] = useState("");
+  const [measurable, setMeasurable] = useState("");
+  const [achievable, setAchievable] = useState("");
+  const [relevant, setRelevant] = useState("");
+  const [timely, setTimely] = useState("");
+  const [result, setResult] = useState("")
+  // const [result1, setResult1] = useState("");
+  // const [result2, setResult2] = useState("");
 
   async function onSubmit(event) {
     event.preventDefault();
     try {
-      const response = await fetch("/api/generate", {
+      const response = await fetch("/api/generate-tinder", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ achievement: achievement, team: team, startDate: startDate, endDate: endDate}),
+        body: JSON.stringify({ specific: specific, measurable: measurable, achievable: achievable, relevant: relevant, timely:timely}),
       });
 
       const data = await response.json();
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
-// console.log('data.result',data)
 
-      setResult(data.result);
+    //   console.log('data -------->', data)
 
-     //  setAchievement("");
+      if(result.length === 0 ){
+        setResult(data.result);
+      }
+        if(result.length > 0 && result1.length === 0 ){
+        setResult1(data.result);
+        }
+
+        if(result.length > 0 && result1.length > 0 && result2.length === 0 ){ 
+        setResult2(data.result);
+         }
+
+
     } catch(error) {
       // Consider implementing your own error handling logic here
       // console.error(error);
@@ -47,39 +60,63 @@ export default function Home() {
         <img src="/superteam.png" className={styles.icon} />
         <h3>Clara</h3>
         <form onSubmit={onSubmit}>
-          
-          <input
+          <label>Specific</label>
+          <textarea
             type="text"
-            name="achievement"
-            placeholder="What do you want to achieve?"
-            value={achievement}
-            onChange={(e) => setAchievement(e.target.value)}
+            rows={4}
+            name="specific"
+            // placeholder="Specific"
+            value={specific}
+            onChange={(e) => setSpecific(e.target.value)}
           />
-            <input
+          <label>Measurable</label>
+          <textarea
             type="text"
-            name="team"
-            placeholder="Describe your team"
-            value={team}
-            onChange={(e) => setTeam(e.target.value)}
+            rows={2}
+            name="measurable"
+           // placeholder="Measurable"
+            value={measurable}
+            onChange={(e) => setMeasurable(e.target.value)}
           />
-           <input
+          <label>Achievable</label>
+           <textarea
             type="text"
-            name="staredDate"
-            placeholder="Start date"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
+            rows={4}
+            name="achievable"
+            // placeholder="Achievable"
+            value={achievable}
+            onChange={(e) => setAchievable(e.target.value)}
           />
-            <input
+          <label>Relevant</label>
+            <textarea
             type="text"
-            name="endDate"
-            placeholder="End date"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
+            rows={4}
+            name="relevant"
+            // placeholder="Relevant"
+            value={relevant}
+            onChange={(e) => setRelevant(e.target.value)}
           />
+          <label>Timely</label>
+          <textarea
+            type="text"
+            rows={2}
+            name="timely"
+            // placeholder="Timely"
+            value={timely}
+            onChange={(e) => setTimely(e.target.value)}
+          />   
+
           <input type="submit" value="Generate a goal" />
-       
+     
         </form>
+
+        <div className={styles.goals} >
+        <h4>Generated Goal</h4>
         <div className={styles.result}>{result}</div>
+        {/* <div className={styles.result}>{result1}</div>
+        <div className={styles.result}>{result2}</div> */}
+
+        </div>
       </main>
     </div>
   );
