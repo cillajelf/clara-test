@@ -11,7 +11,7 @@ export default function Home() {
   const [result, setResult] = useState("")
   // const [result1, setResult1] = useState("");
   // const [result2, setResult2] = useState("");
-  const [warCry, setWarCry] = useState("");
+  
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -29,7 +29,6 @@ export default function Home() {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
 
-    //   console.log('data -------->', data)
       setResult(data.result);
       // if(result.length === 0 ){
       //   setResult(data.result);
@@ -37,42 +36,17 @@ export default function Home() {
       //   if(result.length > 0 && result1.length === 0 ){
       //   setResult1(data.result);
       //   }
-
       //   if(result.length > 0 && result1.length > 0 && result2.length === 0 ){ 
       //   setResult2(data.result);
       //    }
 
 
     } catch(error) {
-      // Consider implementing your own error handling logic here
-      // console.error(error);
       alert(error.message);
     }
   }
 
-  async function onWarCry(event) {
-    event.preventDefault();
-
-    try {
-      const response = await fetch("/api/generate-war-cry", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ goal: result}),
-      });
-
-      const data = await response.json();
-      if (response.status !== 200) {
-        throw data.error || new Error(`Request failed with status ${response.status}`);
-      }
-
-    setWarCry(data.result);
-    
-     } catch(error) {
-       alert(error.message);
-     }
-  }
+ 
 
   return (
     <div>
@@ -129,13 +103,11 @@ export default function Home() {
           <input type="submit" value="Generate a goal" />
      
         </form>
-
+      {result.length ? 
         <div className={styles.goals} >
-        <div className={styles.result}>{result}</div>
-        <input type="submit" value="Generate a war cry" onClick={onWarCry}/>
-        <div className={styles.result}>{warCry}</div>
-
-        </div>
+        <div className={styles.result}>{result}</div>  </div> 
+        : null}
+        
       </main>
     </div>
   );
